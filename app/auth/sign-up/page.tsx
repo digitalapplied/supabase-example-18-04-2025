@@ -1,12 +1,10 @@
-import { redirect } from "next/navigation";
-import { createClient } from "@/lib/supabase/server";
 import { SignUpForm } from "@/components/sign-up-form";
+import { guestOnly } from "@/lib/guest-only";
+
+export const metadata = { title: "Sign&nbsp;up · Supabase Example" };
 
 export default async function Page() {
-  const supabase = await createClient();
-  const { data } = await supabase.auth.getUser();
-
-  if (data.user) redirect("/protected");
+  await guestOnly();
 
   return (
     <div className="flex min-h-svh w-full items-center justify-center p-6 md:p-10">
