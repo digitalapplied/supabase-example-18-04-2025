@@ -11,7 +11,7 @@ export default async function Dashboard() {
   if (error || !data?.user) redirect("/auth/login");
 
   return (
-    <div className="flex h-svh w-full flex-col items-center justify-center gap-6 p-4">
+    <div className="flex flex-1 w-full flex-col items-center justify-center gap-6 p-4">
       <h2 className="text-2xl">
         Welcome&nbsp;<span className="font-semibold">{data.user.email}</span>
       </h2>

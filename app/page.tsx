@@ -7,7 +7,8 @@ export const metadata = {
 
 export default function Home() {
   return (
-    <div className="flex flex-col min-h-screen">
+    /*  ⬇️  flex‑1 lets the footer sit at the bottom without scrolling */
+    <div className="flex flex-col flex-1">
       {/* ----- Main content ----- */}
       <main className="flex-1 container py-12">
         <div className="flex flex-col items-center justify-center gap-8 text-center py-12">
@@ -43,7 +44,7 @@ export default function Home() {
       <footer className="border-t py-6 md:py-4">
         <div className="container flex justify-center px-4 md:px-6">
           <p className="text-sm text-muted-foreground text-center">
-            © {new Date().getFullYear()} Supabase Example. All rights reserved.
+            © {new Date().getFullYear()} Supabase Example. All rights reserved.
           </p>
         </div>
       </footer>
