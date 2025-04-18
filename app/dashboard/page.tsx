@@ -17,8 +17,8 @@ export default async function Dashboard() {
       </h2>
 
       <div className="flex gap-3">
-        <Link href="/protected/profile">
-          <Button variant="outline">Profile&nbsp;(stub)</Button>
+        <Link href="/dashboard/profile">
+          <Button variant="outline">Profile</Button>
         </Link>
         <Link href="/auth/update-password">
           <Button variant="outline">Change&nbsp;password</Button>

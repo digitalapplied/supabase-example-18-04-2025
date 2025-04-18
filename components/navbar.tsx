@@ -41,7 +41,7 @@ export function Navbar() {
           <nav className="flex items-center gap-4">
             {loggedIn ? (
               <>
-                <Link href="/protected">
+                <Link href="/dashboard">
                   <Button size="sm">Dashboard</Button>
                 </Link>
                 <Button variant="outline" size="sm" onClick={handleLogout}>

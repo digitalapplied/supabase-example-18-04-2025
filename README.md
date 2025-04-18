@@ -33,7 +33,7 @@ This project uses Supabase for authentication and potentially database interacti
     - In your Supabase project dashboard, navigate to `Authentication` > `URL Configuration`.
     - Under **Redirect URLs**, add the URLs your application will use for redirects after authentication actions. For local development, you typically need:
       - `http://localhost:3000/auth/confirm` (or specific confirmation paths)
-      - `http://localhost:3000/protected` (or wherever sign-up redirects)
+      - `http://localhost:3000/dashboard` (or wherever sign-up redirects)
       - `http://localhost:3000/auth/update-password` (for password reset)
     - **Important:** Update these URLs for your deployed application (e.g., `https://your-app-domain.com/auth/confirm`). You can use wildcards like `http://localhost:3000/**` for convenience during development, but be specific in production.
 
