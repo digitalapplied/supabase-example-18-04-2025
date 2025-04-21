@@ -54,8 +54,24 @@ export async function updateSession(request: NextRequest) {
     return NextResponse.redirect(url);
   }
 
+  // If the user IS logged in AND trying to access an /auth/* page
+  if (user && pathname.startsWith('/auth')) {
+    // Allow access ONLY to the update-password page
+    if (pathname === '/auth/update-password') {
+      // Allow the request to proceed
+      return supabaseResponse;
+    } else {
+      // For any other /auth/* page (like /login, /sign-up), redirect to dashboard
+      const url = request.nextUrl.clone();
+      url.pathname = '/dashboard';
+      console.log(`Redirecting authenticated user from ${pathname} to /dashboard`);
+      return NextResponse.redirect(url);
+    }
+  }
+
   // If the user IS logged in AND trying to access a public-only auth page (handled in AuthLayout now)
   // This middleware mainly focuses on protecting non-public routes for non-users.
+  // ^^^ This comment is now slightly outdated as middleware handles logged-in /auth/* access ^^^ 
 
   return supabaseResponse;
 }
