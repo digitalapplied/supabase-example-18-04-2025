@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { Navbar } from "@/components/navbar";
+import LayoutWrapper from '@/components/LayoutWrapper';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -21,15 +21,15 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
+
   return (
     <html lang="en">
       {/*  ⬇️  Body is now the main flex container */}
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-screen`}
       >
-        <Navbar />
-        {/* Pages can grow to fill remaining space */}
-        {children}
+        {/* Use LayoutWrapper to handle conditional Navbar */}
+        <LayoutWrapper>{children}</LayoutWrapper>
       </body>
     </html>
   );
