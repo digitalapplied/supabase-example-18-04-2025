@@ -10,11 +10,15 @@ export const metadata = { title: "User Profile" };
 export default async function Profile() {
   const supabase = await createClient();
   const { data, error } = await supabase.auth.getUser();
-  
-  if (error || !data?.user) {
-    redirect("/auth/login");
+
+  // Middleware handles the redirect if !data.user
+
+  // Handle potential null user gracefully
+  if (!data?.user) {
+    // Or return a loading/error component
+    return <div className="flex flex-1 w-full items-center justify-center"><p>Loading user data or error...</p></div>;
   }
-  
+
   const user = data.user;
   
   return (

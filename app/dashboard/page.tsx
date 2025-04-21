@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { Button } from "@/components/ui/button";
 
@@ -8,7 +7,10 @@ export const metadata = { title: "Dashboard" };
 export default async function Dashboard() {
   const supabase = await createClient();
   const { data, error } = await supabase.auth.getUser();
-  if (error || !data?.user) redirect("/auth/login");
+
+  if (!data?.user) {
+    return <div className="flex flex-1 w-full items-center justify-center"><p>Loading user data or error...</p></div>;
+  }
 
   return (
     <div className="flex flex-1 w-full flex-col items-center justify-center gap-6 p-4">
